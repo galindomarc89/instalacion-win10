@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instalación de Windows 10 Professional</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #eee;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            margin: 0;
+            padding: 0;
+        }
+
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weigth: 700;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
+        h1 {
+            padding: 0.67em 0;
+        }
+
+        h2 {
+            padding: 0.83em 0;
+        }
+
+        h3 {
+            padding: 1em 0;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            padding: 0 0 2em 0;
+            text-align: justify;
+        }
+
+        ul {
+                margin-block-start: 0em;
+        }
+
+        img {
+            display: block;
+            margin: 1em auto;
+            max-width: 100%
+        }
+
+        .author {
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            font-weight: 300;
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: 600;
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: rgb(60 64 67 / 15%) 0px 1px 3px 1px;
+            margin: 0 auto;
+            max-width: 1024px;
+            padding: 2em 3em;
+        }
+
+        .title {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Instalación de Windows 10 Professional</h1>
+        <h2 class="author">Marc Galindo García</h2>
+        <hr>
+        <h3>Índice</h3>
+        <ul>
+            <li><a href="#1">1. Creando la máquina virtual</a></li>
+            <li><a href="#2">2. Instalando el sistema operativo</a></li>
+            <li><a href="#3">3. Asignando el fichero de memoria virtual</a></li>
+            <li><a href="#4">4. Desmontando la imagen del disco de instalación</a></li>
+            <li><a href="#5">5. Creando usuarios en Windows</a></li>
+            <li><a href="#6">6. Comprobando conexión a Internet</a></li>
+        </ul>
+        <hr>
+        <h3 id="1">1. Creando la máquina virtual</h3>
+        <p>El primer paso será el de crear una máquina virtual donde instalar Windows 10 y configurarla. Para ello abrimos nuestro programa favorito. En esta actividad vamos a utilizar VM Virtualbox de Oracle en su versión 6.1.16 desde una máquina que dispone de un procesador Intel Core i7-6700 8 núcleos y 16 GB de memoria RAM. En todo momento, el programa VM VirtualBox lo vamos a ejecutar desde Windows 10 Pro a 64 bits.</p>
+        <img src="img/1.png">
+        <p>Lo siguiente que haremos será crear una nueva máquina virtual haciendo clic en el botón “Nueva”.</p>
+        <img src="img/2.png">
+        <p>Ahora hacemos clic en el botón “Modo experto” en la ventana que nos aparece.</p>
+        <img src="img/3.png">
+        <p>Automáticamente se nos despliegan más opciones de configuración. Debido a que la máquina real que estoy utilizando no sufrirá al designarle 4 GB de su memoria RAM a la máquina virtual, lo vamos a hacer así. Sin embargo, lo mínimo necesario es 2 GB, aunque siempre que tengamos un mínimo de 8 GB de RAM en nuestra máquina real, es conveniente asignarle 4 GB a la máquina virtual.</p>
+        <p>El resto de configuraciones las dejamos como en la imagen de arriba y hacemos clic en “Crear”.</p>
+        <img src="img/4.png">
+        <p>Ahora cambiamos a una pantalla donde podremos elegir el destino del disco de la máquina virtual, que yo he dejado por defecto. También podemos elegir el tamaño que ocupará (como máximo), ya que utilizaremos la opción “Reservado dinámicamente” para que no ocupe la el espacio asignado si no lo necesita. La capacidad que vamos a utilizar es de 50 GB. Una vez terminado, hacemos clic en “Crear”.</p>
+        <img src="img/5.png">
+        <p>Ahora que hemos creado la máquina virtual, nos aparece de nuevo el menú principal de VM VirtualBox con las máquinas virtuales que tenemos creadas. Pero aún tenemos que hacer algunas configuraciones. Para ello, hacemos clic en el botón “Configuración” teniendo seleccionada en la lista de la izquierda la máquina virtual que acabamos de crear.</p>
+        <img src="img/6.png">
+        <p>Ahora que se nos ha abierto el menú de configuración, iremos a “Sistema” en el listado de la izquierda.</p>
+        <img src="img/7.png">
+        <p>En “Sistema” podemos modificar de nuevo la memoria RAM asignada a la máquina virtual, pero no hemos venido a eso. Justo debajo del título “Sistema” tenemos tres pestañas. Hacemos clic en la llamada “Procesador”.</p>
+        <img src="img/8.png">
+        <p>En la pestaña “Procesador” vemos núcleos de nuestro procesador real asignados a la máquina virtual. En mi caso tengo 8 núcleos, así que no pasará nada por asignarle 2.</p>
+        <p>Una vez hecho, hacemos clic en “Almacenamiento” en el listado de la izquierda.</p>
+        <img src="img/9.png">
+        <p>Ahora vamos a cargar la imagen de arranque de Windows 10 como medio de instalación virtual. Para ello, vamos al listado de controladores SATA en el panel central y hacemos clic en el disco óptico que aparece como “Vacío”.</p>
+        <img src="img/10.png">
+        <p>Aquí podremos elegir el archivo ISO de instalación de Windows 10 Professional que podemos descargar directamente de la página oficial de Microsoft. Para ello, lo seleccionamos haciendo clic en el icono de unidad óptica de la derecha, en el apartado “Atributos” y escogiendo la ubicación del archivo.</p>
+        <p>Llegados a este punto, ya estamos en disposición de arrancar nuestra máquina virtual y dar por finalizada su creación y configuración posterior. Para ello, hacemos clic en “Aceptar”.</p>
+        <img src="img/11.png">
+        <p>Al salir del menú de configuración, volvemos al menú principal de VM VirtualBox. Seleccionamos nuestra máquina virtual para Windows 10 y hacemos clic en “Iniciar”.</p>
+        <hr>
+        <h3 id="2">2. Instalando el sistema operativo</h3>
+        <img src="img/12.png">
+        <p>Al arrancar nuestra máquina virtual, habrá detectado automáticamente la imagen de disco de instalación de Windows 10. Esperamos a que cargue la interfaz de usuario.</p>
+        <img src="img/13.png">
+        <p>Una vez cargada la interfaz de usuario, nos aparecerá el menú de selección de la imagen de arriba. Como en esta actividad vamos a instalar el sistema operativo en castellano, vamos a hacer clic en “Siguiente” sin cambiar nada aquí, salvo que por defecto nos aparezca en otro idioma o queramos cambiarlo por otro.</p>
+        <img src="img/14.png">
+        <p>En la siguiente pantalla podemos elegir entre reparar una instalación existente de Windows 10 o hacer una instalación desde cero. Como este último es nuestro caso, hacemos clic en el botón “Instalar ahora”.</p>
+        <img src="img/15.png">
+        <p>En esta actividad no vamos a ver cómo activar una licencia de Windows. Por lo tanto, omitiremos este paso haciendo clic en "No tengo clave de producto".</p>
+        <img src="img/16.png">
+        <p>En el listado de ediciones de Windows 10 que vienen con la imagen ISO, seleccionamos Windows 10 Pro y hacemos clic en "Siguiente".</p>
+        <img src="img/17.png">
+        <p>En esta página vamos a tener que aceptar los términos de licencia del software de Miscrosoft. Independientemente de si los leemos o no, para proceder tenemos que marcar la casilla "Acepto los términos de licencia" y hacemos clic en "Siguiente".</p>
+        <img src="img/18.png">
+        <p>En este paso, tenemos que elegir entre actualizar una versión de Windows anterior a la 10 o hacer una instalación limpia. Haremos lo último, haciendo clic en "Personalizada".</p>
+        <img src="img/19.png">
+        <p>En esta pantalla podemos crear, modificar y eliminar particiones de disco. Como en el enunciado de la actividad se especifica, creamos una partición de 2 GB que será designada para el fichero de memoria virtual. Para ello, hacemos clic en "Nuevo".</p>
+        <img src="img/20.png">
+        <p>Ahora especificamos el tamaño de la partición. Será de 2048 MB. Hacemos clic en "Aplicar".</p>
+        <img src="img/21.png">
+        <p>Ahora seleccionamos la el espacio en disco donde irá instalado el sistema operativo, que es precisamente el espacio sin particionar. Posteriormente asignaremos la partición que hemos reservado como memoria virtual. Después hacemos clic en "Siguiente".</p>
+        <img src="img/22.png">
+        <p>El proceso de instalación de Windows 10 Professional ha empezado. Tendremos que esperar unos minutos.</p>
+        <img src="img/23.png">
+        <p>Al terminar de copiar archivos, nos encontramos con esta pantalla. Podemos hacer clic en "Reiniciar ahora" o esperar a que termine la cuenta atrás.</p>
+        <img src="img/24.png">
+        <p>Al reiniciar el sistema, ignoraremos la pantalla que nos pide pulsar cualquier tecla para arrancar desde el CD/DVD. Por lo que no pulsaremos ninguna tecla.</p>
+        <p>El sistema operativo arrancará automáticamente y terminará de hacer sus últimas configuraciones. Deberíamos ver algo parecido a la imagen superior.</p>
+        <img src="img/25.png">
+        <p>Seguimos esperando a que termine el proceso y cargue el proceso de configuración inicial.</p>
+        <img src="img/26.png">
+        <p>En la primera pantalla elegimos la región. Yo procederé haciendo clic en "Sí" tras seleccionar "España".</p>
+        <img src="img/27.png">
+        <p>Tras seleccionar el idioma asociado a la escritura con el teclado, pulsamos "Sí".</p>
+        <img src="img/28.png">
+        <p>Si queremos añadir otras distribuciones de teclado, este es el momento. En mi caso no lo haré, así que hago clic en "Omitir".</p>
+        <img src="img/29.png">
+        <p>Para organizaciones, la configuración de un equipo está basada en un entorno muy distinto al uso personal, ya que sólo los administradores pueden realizar cambios importantes en la configuración de las máquinas.</p>
+        <p>En nuestro caso, haremos la configuración para uso personal. Para ello marcamos la opción y después hacemos clic en "Siguiente".</p>
+        <img src="img/30.png">
+        <p>Si hemos llegado aquí, significa que tenemos conexión a Internet. De lo contrario, Windows nos pediría conectarnos vía WiFi o Ethernet.</p>
+        <p>En este punto, podemos crear una cuenta de Microsoft o iniciar sesión en una ya existente. Como no es necesario para esta actividad, crearemos una cuenta sin conexión haciendo clic en el botón "Cuenta sin conexión".</p>
+        <img src="img/31.png">
+        <p>A modo recordatorio, Windows nos insiste en usar una cuenta en línea. Para proceder creando una cuenta local en el equipo, hacemos clic en "Experiencia limitada".</p>
+        <img src="img/32.png">
+        <p>Llega el momento de dar nombre al usuario administrador que se crea por primera vez. Escribimos lo que queramos y hacemos clic en "Siguiente".</p>
+        <img src="img/33.png">
+        <p>Si queremos añadir una contraseña a la cuenta, este es el momento. Sin embargo, Windows no obliga a ello. Después hacemos clic en "Siguiente".</p>
+        <img src="img/34.png">
+        <p>Empieza un largo proceso de aceptación de configuraciones de reconocimiento de voz, servicios de ubicación y un largo etcétera.</p>
+        <p>Como nuestra elección en estos puntos es indiferente de cara al objetivo de la actividad, Independientemente de nuestra elección, haremos clic en "Aceptar" tras elegir la opción deseada.</p>
+        <img src="img/35.png">
+        <p>De nuevo, haremos clic en "Aceptar" tras elegir la opción deseada.</p>
+        <img src="img/36.png">
+        <p>Otra vez, haremos clic en "Aceptar" tras elegir la opción deseada.</p>
+        <img src="img/37.png">
+        <p>Una vez más, haremos clic en "Aceptar" tras elegir la opción deseada.</p>
+        <img src="img/38.png">
+        <p>Otra vez, haremos clic en "Aceptar" tras elegir la opción deseada.</p>
+        <img src="img/39.png">
+        <p>De nuevo, haremos clic en "Aceptar" tras elegir la opción deseada.</p>
+        <img src="img/40.png">
+        <p>Por último, haremos clic en "Aceptar" tras elegir la opción deseada.</p>
+        <img src="img/41.png">
+        <p>En esta página nos habla de "Cortana", el asistente de Windows. Aquí podemos activar o desactivarla haciendo clic en "Ahora no" o en "Aceptar".</p>
+        <img src="img/42.png">
+        <p>Una vez terminado el proceso de configuración inicial de Windows, volvemos a esperar a que termine la configuración de la cuenta.</p>
+        <img src="img/43.png">
+        <p>Ya estamos en el escritorio de Windows y podemos dar por finalizado el proceso de instalación del sistema.</p>
+        <p>Lo siguiente será asignar la partición que hemos creado antes como fichero de memoria virtual. Para ello, apretamos las teclas Win+E.</p>
+        <hr>
+        <h3 id="3">3. Asignando el fichero de memoria virtual</h3>
+        <img src="img/44.png">
+        <p>En esta ventana, nos aparece la interfaz de usuario del explorador de Windows. Hacemos clic en "Este equipo" en la barra lateral de la izquierda.</p>
+        <img src="img/45.png">
+        <p>Ahora nos aparecen las unidades físicas de la máquina virtual. La unidad con la letra "D" es nuestro objetivo. Tenemos que darle formato y después podremos asignarlo como fichero de memoria virtual.</p>
+        <p>Para ello, hacemos clic derecho sobre su icono.</p>
+        <img src="img/46.png">
+        <p>En el menú de opciones que se despliega, hacemos clic en "Formatear...".</p>
+        <img src="img/47.png">
+        <p>En este panel no vamos a tocar nada, pues las opciones por defecto son idóneas para nuestro cometido. Hacemos clic en "Iniciar".</p>
+        <img src="img/48.png">
+        <p>Se nos advierte de que se borrarán todos los archivos de la unidad. Como no había nada, no debemos preocuparnos. Hacemos clic en "Aceptar".</p>
+        <img src="img/49.png">
+        <p>Tras un breve tiempo, terminará de darle formato a la partición. Al aparecer esta notificación, hacemos clic en "Aceptar" y cerramos todas las ventanas.</p>
+        <img src="img/50.png">
+        <p>Ahora en el escritorio de Windows, hacemos clic derecho sobre el icono de Windows, ubicado abajo a la izquierda. Después hacemos clic en "Sistema".</p>
+        <img src="img/51.png">
+        <p>Nos aparece la siguiente ventana. La barra lateral de la izquierda no nos interesa en este momento. Navegamos por el panel derecho, haciendo scroll hacia abajo del todo.</p>
+        <img src="img/52.png">
+        <p>Nos topamos con el final del panel y vemos que en "Opciones de configuración relacionadas" hay un enlace que nos interesa llamado "Configuración avanzada del sistema". Hacemos clic en él.</p>
+        <img src="img/53.png">
+        <p>En la ventana que se nos ha abierto, hacemos clic en el botón "Configuración" dentro de la casilla de "Rendimiento".</p>
+        <img src="img/54.png">
+        <p>En esta nueva ventana, hacemos clic en la pestaña superior llamada "Opciones avanzadas".</p>
+        <img src="img/55.png">
+        <p>Por último, tenemos una ventana en la que nos habla de la "Memoria virtual" y eso es lo que nos interesa. Hacemos clic en el botón "Cambiar..."</p>
+        <img src="img/56.png">
+        <p>Aquí podremos modificar tanto como queramos, incluso redefinir el espacio asignado, así como la unidad o particion que se utiliza para el fichero de memoria virtual.</p>
+        <p>En nuestro caso, queremos usar la unidad "D:" (que acabamos de formatear) con los 2 GB que especificaba el enunciado de la actividad. Para ello, desmarcamos la casilla superior en el mensaje "Adminstrar automáticamente el tamaño del archivo de paginación para todas las unidades".</p>
+        <img src="img/57.png">
+        <p>Después, seleccionamos la unidad "D:". En los botones inferiores encontramos el botón selector llamado "Tamaño personalizado". Hacemos clic en él y en las casillas que se habilitan, escribimos 2029 MB, que es la cantitad de espacio disponible en la unidad (nos la muuestra justo encima). Al terminar, hacemos clic en "Establecer".</p>
+        <img src="img/58.png">
+        <p>Una vez asignado, podemos eliminar el espacio que Windows había reservado automáticamente en la partición donde había instalado el sistema. Para ello, seleccionamos de la lista la unidad "C:" y hacemos clic en el selector "Sin archivo de paginación". Después, hacemos clic en "Establecer" y aceptamos el aviso.</p>
+        <p>Una vez terminado, podemos cerrar todas las ventanas.</p>
+        <hr>
+        <h3 id="4">4. Desmontando la imagen del disco de instalación</h3>
+        <img src="img/59.png">
+        <p>Para desmontar la imagen de disco de la instalación de Windows y así no cargarla cada vez que iniciamos la máquina virtual, nos vamos al menú superior del emulador VM VirtualBox y seguimos la siguiente ruta: "Dispositivos" > "Unidades ópticas" > "Eliminar disco de la unidad virtual".</p>
+        <p>Este proceso se puede hacer con la máquina en ejecución, pues es exactaemente lo mismo que abrir una gaveta de disco y expulsar un DVD de nuestro ordenador o desconectar una memoria flash.</p>
+        <hr>
+        <h3 id="5">5. Creando usuarios en Windows</h3>
+        <img src="img/60.png">
+        <p>Para crear un usuario de Windows, podemos hacerlo desde el panel de "Cuentas de usuario". Para abrirlo, apretamos las teclas Win+R y escribimos "netplwiz" (sin las comillas). Hacemos clic en "Aceptar".</p>
+        <img src="img/61.png">
+        <p>En este menú vemos un listado de los usuarios existentes en nuestro sistema. Ahora mismo sólo está el usuario "Yo" que es el que he creado al iniciar por primera vez el sistema. Como no podría ser de otra manera, es un usuario administrador y así lo vemos en pantalla, pues pertenece al grupo de Administradores.</p>
+        <p>Vamos a crear un nuevo usuario administrador para ver el proceso. Hacemos clic en el botón "Agregar..."</p>
+        <img src="img/62.png">
+        <p>De nuevo aparece una ventana que nos invita a crear una cuenta Microsoft o iniciar sesión en una existente. Como no queremos hacer eso, hacemos clic en "Iniciar sesión sin una cuenta Microsoft (no recomendado)".</p>
+        <img src="img/63.png">
+        <p>Otra vez a modo recordatorio, nos insisten en usar una cuenta Microsoft. Insistimos en hacer una cuenta de usuario local haciendo clic en "Cuenta local".</p>
+        <img src="img/64.png">
+        <p>Ahora podemos poner un nombre de usuario y su contraseña. Nuevamente no es obligatorio poner contraseña. Yo llamaré al usuario "CuentaAdmin" y no tendrá contraseña. Después hacemos clic en "Siguiente".</p>
+        <img src="img/65.png">
+        <p>Nos aparece una pantalla explicando que hemos creado la cuenta correctamente. Hacemos clic en "Finalizar".</p>
+        <img src="img/66.png">
+        <p>Ya tenemos creada la cuenta de usuario y aparece en el listado, pero como bien podemos observar, pertenece al grupo "Usuarios". Como queremos que pertenezca al grupo de "Administradores", seleccionamos la cuenta y hacemos clic en "Propiedades".</p>
+        <img src="img/67.png">
+        <p>En la nueva ventana, hacemos clic en la pestaña "Pertenencia a grupos".</p>
+        <img src="img/68.png">
+        <p>En esta ventana podemos elegir entre los grupos ya existentes o crear nuevos grupos de usuarios, que por ejemplo sean un híbrido entre administrador y usuario normal, o usuarios con más limitaciones.</p>
+        <p>Como nos interesa hacerlo administrador, seleccionamos la casilla "Administrador" y hacemos clic en "Aceptar".</p>
+        <img src="img/69.png">
+        <p>Ahora podemos ver que nuestra cuenta recién creada pertenece al grupo de "Administradores".</p>
+        <p>Vamos a ver ahora cómo podemos crear una cuenta que pertenezca al grupo de "Usuarios". Hacemos clic en "Agregar...".</p>
+        <img src="img/70.png">
+        <p>Volvemos a ver una pantalla que nos es familiar. Hacemos clic en "Inicia sesión sin una cuenta Microsoft (no recomendado)".</p>
+        <img src="img/71.png">
+        <p>Hacemos clic en "Cuenta local".</p>
+        <img src="img/72.png">
+        <p>De nuevo, nombramos nuestro usuario. Recordemos que esta vez no será adminstrador. Yo lo llamaré "CuentaUsuario". Después hacemos clic en "Siguiente".</p>
+        <img src="img/73.png">
+        <p>Hacemos clic en "Finalizar".</p>
+        <img src="img/74.png">
+        <p>Ya podemos ver a nuestra nueva cuenta de usuario el listado. Windows lo asigna por defecto al grupo de usuarios "Usuarios", por lo que no tendremos que cambiar nada.</p>
+        <p>Podemos hacer clic en "Aceptar" para guardar los cambios y cerrar el panel de Cuentas de usuario.</p>
+        <hr>
+        <h3 id="6">6. Comprobando conexión a Internet</h3>
+        <img src="img/75.png">
+        <p>Para comprobar la conexión a Internet, estando en el escritorio de Windows pulsamos las teclas Win+R. En el campo de texto escribimos "cmd" (sin las comillas) y hacemos clic en "Aceptar".</p>
+        <img src="img/76.png">
+        <p>En la consola de comandos de Windows escribimos el comando "ping 8.8.8.8" que hará un envío de paquetes al servidor DNS de Google. De este modo, si el envío y el rebote de los paquetes es correcto, podremos saber si nuestra conexión a Internet está correcta.</p>
+        <p>Tras introducir el comando, pulsamos la tecla "Intro".</p>
+        <img src="img/77.png">
+        <p>Nuestra tarjeta de red hace el envío de paquetes y espera respuesta por parte del servidor de Google. Como vemos en la imagen, en mi caso ha sido exitoso el envío de los cuatro paquetes que se envían por defecto, tardando una media de 16ms entre envío y recepción.</p>
+        <p>Por tanto, nuestra conexión a Internet funciona debidamente.</p>
+        <img src="img/78.png">
+        <p>Aprovechando que tenemos la consola de comandos abierta, podemos proceder al apagado del sistema operativo y la máquina virtual escribiendo el comando "shutdown /s" (sin las comillas) y pulsando la tecla "Intro".</p>
+        <img src="img/79.png">
+        <p>Tras haber hecho esto, la máquina se apagará en breves instantes. Hacemos clic en "Cerrar" en la notificación que aparece y esperamos a que se apague tras unos segundos.</p>
+    </div>
+</body>
+
+</html>
